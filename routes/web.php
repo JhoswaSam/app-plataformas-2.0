@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\OngController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,6 +20,8 @@ Route::get('/', function () {
 });
 
 Route::resource('categorias',CategoriaController::class);
+
+Route::resource('ongs',OngController::class);
 
 Route::middleware([
     'auth:sanctum',

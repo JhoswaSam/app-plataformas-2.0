@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categoria;
 use App\Models\Ong;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,7 @@ class OngController extends Controller
     public function index()
     {
         $data = Ong::all();
-        return view('articulo.index')->with('articulos',$data);
+        return view('ong.list')->with('ongs',$data);
     }
 
     /**
@@ -25,7 +26,8 @@ class OngController extends Controller
      */
     public function create()
     {
-        //
+        $data = Categoria::all();
+        return view('ong.create')->with('categorias',$data);
     }
 
     /**
@@ -36,7 +38,19 @@ class OngController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $ong = new Ong();
+        $ong->codigoOng = $request->get('codigo');
+        $ong->categoria_id = $request->get('categoria');
+        $ong->nombreContacto = $request->get('contacto');
+        $ong->direccionOng = $request->get('direccion');
+        $ong->telefonoOng = $request->get('telefono');
+        $ong->descripcionOng = $request->get('descripcion');
+        $ong->correoOng = $request->get('correo');
+        $ong->estadoOng = boolval($request->get('estado'));
+
+        $ong->save();
+
+        return redirect('/ongs');
     }
 
     /**
@@ -58,7 +72,9 @@ class OngController extends Controller
      */
     public function edit($id)
     {
-        //
+        $ong = Ong::find($id);
+        $categorias = Categoria::all();
+        return view('ong.edit')->with('ong',$ong)->with('categorias',$categorias);
     }
 
     /**
@@ -70,7 +86,19 @@ class OngController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $ong = Ong::find($id);
+        $ong->codigoOng = $request->get('codigo');
+        $ong->categoria_id = $request->get('categoria');
+        $ong->nombreContacto = $request->get('contacto');
+        $ong->direccionOng = $request->get('direccion');
+        $ong->telefonoOng = $request->get('telefono');
+        $ong->descripcionOng = $request->get('descripcion');
+        $ong->correoOng = $request->get('correo');
+        $ong->estadoOng = boolval($request->get('estado'));
+
+        $ong->save();
+
+        return redirect('/ongs');
     }
 
     /**
@@ -81,6 +109,8 @@ class OngController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $ong = Ong::find($id);
+        $ong->delete();
+        return redirect('/ongs');
     }
 }

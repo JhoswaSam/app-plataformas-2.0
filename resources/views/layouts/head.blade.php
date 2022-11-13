@@ -12,7 +12,7 @@
     <title>CRUD</title>
   </head>
   <body>
-    <h1 class="bg-primary text-white text-center">CRUD Categoria</h1>
+    <h1 class="bg-primary text-white text-center">CRUD</h1>
 
     <div class="container">
         @yield('contenido')
