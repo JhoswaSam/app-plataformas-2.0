@@ -12,11 +12,10 @@
     <title>CRUD</title>
   </head>
   <body>
-    <h1 class="bg-primary text-white text-center">CRUD</h1>
 
-    <div class="container">
-        @yield('contenido')
-    </div>
+    
+    @yield('contenido')
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     @yield('js')
 </body>

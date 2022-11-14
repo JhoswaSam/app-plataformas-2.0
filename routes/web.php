@@ -21,20 +21,27 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('categorias',CategoriaController::class);
+Route::get('/client', function () {
+    return view('client.welcome');
+});
 
-Route::resource('ongs',OngController::class);
 
-Route::resource('usuarios',UsuarioController::class);
-
-Route::resource('donativos',DonativoController::class);
 
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
+    
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    Route::resource('ongs',OngController::class);
+
+    Route::resource('categorias',CategoriaController::class);
+
+    Route::resource('usuarios',UsuarioController::class);
+
+    Route::resource('donativos',DonativoController::class);
 });
