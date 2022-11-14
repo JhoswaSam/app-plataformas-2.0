@@ -20,6 +20,10 @@
             </select>
         </div>
         <div class="mb-3">
+            <label for="" class="form-label">Nombre</label>
+            <input id="nombre" name="nombre" type="text" class="form-control" tabindex="2" value="{{$ong->nombreOng}}">
+        </div>
+        <div class="mb-3">
             <label for="" class="form-label">Contacto</label>
             <input id="contacto" name="contacto" type="text" class="form-control" tabindex="2" value="{{$ong->nombreContacto}}">
         </div>

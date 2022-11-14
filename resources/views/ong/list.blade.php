@@ -9,6 +9,7 @@
             <th scope="col">ID</th>
             <th scope="col">Codigo</th>
             <th scope="col">Categoria</th>
+            <th scope="col">Nombre</th>
             <th scope="col">Contacto</th>
             <th scope="col">Direccion</th>
             <th scope="col">Telefono</th>
@@ -24,6 +25,7 @@
                 <td>{{$ong->id}}</td>
                 <td>{{$ong->codigoOng}}</td>
                 <td>{{$ong->categoria->nombreCad}}</td>
+                <td>{{$ong->nombreOng}}</td>
                 <td>{{$ong->nombreContacto}}</td>
                 <td>{{$ong->direccionOng}}</td>
                 <td>{{$ong->telefonoOng}}</td>

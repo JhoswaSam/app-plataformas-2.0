@@ -41,6 +41,7 @@ class OngController extends Controller
         $ong = new Ong();
         $ong->codigoOng = $request->get('codigo');
         $ong->categoria_id = $request->get('categoria');
+        $ong->nombreOng = $request->get('nombre');
         $ong->nombreContacto = $request->get('contacto');
         $ong->direccionOng = $request->get('direccion');
         $ong->telefonoOng = $request->get('telefono');
@@ -89,6 +90,7 @@ class OngController extends Controller
         $ong = Ong::find($id);
         $ong->codigoOng = $request->get('codigo');
         $ong->categoria_id = $request->get('categoria');
+        $ong->nombreOng = $request->get('nombre');
         $ong->nombreContacto = $request->get('contacto');
         $ong->direccionOng = $request->get('direccion');
         $ong->telefonoOng = $request->get('telefono');

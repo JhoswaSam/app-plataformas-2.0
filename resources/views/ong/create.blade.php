@@ -17,6 +17,10 @@
             </select>
         </div>
         <div class="mb-3">
+            <label for="" class="form-label">Nombre</label>
+            <input id="nombre" name="nombre" type="text" class="form-control" tabindex="2">
+        </div>
+        <div class="mb-3">
             <label for="" class="form-label">Contacto</label>
             <input id="contacto" name="contacto" type="text" class="form-control" tabindex="2">
         </div>

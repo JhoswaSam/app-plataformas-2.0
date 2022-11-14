@@ -16,9 +16,10 @@ return new class extends Migration
         Schema::create('donativos', function (Blueprint $table) {
             $table->id();
             $table->string('codigoDon',10);
+            $table->integer('usuario_id');
+            $table->integer('ong_id');
             $table->integer('cantidadDon');
             $table->string('descripcionDon',200);
-            $table->date('fechaDon');
             $table->timestamps();
         });
     }

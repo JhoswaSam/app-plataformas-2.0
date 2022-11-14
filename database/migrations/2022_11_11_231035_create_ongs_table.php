@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('codigoOng',5);
             $table->integer('categoria_id');
+            $table->string('nombreOng',100);
             $table->string('nombreContacto',50);
             $table->string('direccionOng',100);
             $table->string('telefonoOng',12);
