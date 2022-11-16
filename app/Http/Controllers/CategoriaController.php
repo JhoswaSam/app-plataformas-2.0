@@ -18,6 +18,9 @@ class CategoriaController extends Controller
         return view('categoria.list')->with('categorias',$data);
     }
 
+    
+
+
     /**
      * Show the form for creating a new resource.
      *

@@ -25,6 +25,9 @@ Route::get('/client', function () {
     return view('client.welcome');
 });
 
+Route::get('/list',[OngController::class,'list']);
+Route::get('/list/{id}',[OngController::class,'show']);
+
 
 
 Route::middleware([
