@@ -98,6 +98,27 @@ class DonativoController extends Controller
         return redirect('/donativos');
     }
 
+    public function donar($id)
+    {
+        $data = Ong::find($id);
+        return view('client.donation')->with('ong',$data);
+    }
+
+    public function donarAction(Request $request, $id, $idClient)
+    {
+        $donativo = new Donativo();
+
+        $donativo->codigoDon = 'D009';
+        $donativo->usuario_id = $idClient;
+        $donativo->ong_id = $id;
+        $donativo->cantidadDon = $request->get('cantidad');
+        $donativo->descripcionDon = $request->get('descripcion');
+
+        $donativo->save();
+
+        return redirect('/list');
+    }
+
     /**
      * Remove the specified resource from storage.
      *

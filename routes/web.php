@@ -5,6 +5,7 @@ use App\Http\Controllers\DonativoController;
 use App\Http\Controllers\OngController;
 use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
+use Laravel\Jetstream\Rules\Role;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +28,8 @@ Route::get('/client', function () {
 
 Route::get('/list',[OngController::class,'list']);
 Route::get('/list/{id}',[OngController::class,'show']);
-
+Route::get('/list/{id}/donar',[DonativoController::class,'donar']);
+Route::post('/list/{id}/donar/{idClient}',[DonativoController::class,'donarAction']);
 
 
 Route::middleware([

@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('categorias', function (Blueprint $table) {
             $table->id();
-            $table->string('codigoCad',5);
             $table->string('nombreCad',20);
             $table->timestamps();
         });

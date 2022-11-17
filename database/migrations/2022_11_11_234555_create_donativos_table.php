@@ -15,9 +15,12 @@ return new class extends Migration
     {
         Schema::create('donativos', function (Blueprint $table) {
             $table->id();
-            $table->string('codigoDon',10);
-            $table->integer('usuario_id');
-            $table->integer('ong_id');
+            $table->foreignId('usuario_id')
+                    ->constrained('usuarios');
+
+            $table->foreignId('ong_id')
+                    ->constrained('ongs');
+
             $table->integer('cantidadDon');
             $table->string('descripcionDon',200);
             $table->timestamps();

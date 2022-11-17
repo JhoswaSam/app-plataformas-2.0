@@ -38,7 +38,7 @@
                 @endif
                 <td>
                     <form action="{{route('ongs.destroy',$ong->id)}}" method="POST">
-                        <a class="btn btn-info" href="/ongs/{{$ong->id}}/show">Editar</a>
+                        <a class="btn btn-info" href="/ongs/{{$ong->id}}/edit">Editar</a>
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger">Borrar</button>
