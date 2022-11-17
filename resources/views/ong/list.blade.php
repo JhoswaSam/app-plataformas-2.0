@@ -7,7 +7,6 @@
     <thead class="bg-primary text-white">
         <tr>
             <th scope="col">ID</th>
-            <th scope="col">Codigo</th>
             <th scope="col">Categoria</th>
             <th scope="col">Nombre</th>
             <th scope="col">Contacto</th>
@@ -23,7 +22,6 @@
         @foreach ($ongs as $ong)
             <tr>
                 <td>{{$ong->id}}</td>
-                <td>{{$ong->codigoOng}}</td>
                 <td>{{$ong->categoria->nombreCad}}</td>
                 <td>{{$ong->nombreOng}}</td>
                 <td>{{$ong->nombreContacto}}</td>

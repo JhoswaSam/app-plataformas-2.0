@@ -45,7 +45,6 @@ class OngController extends Controller
     public function store(Request $request)
     {
         $ong = new Ong();
-        $ong->codigoOng = $request->get('codigo');
         $ong->categoria_id = $request->get('categoria');
         $ong->nombreOng = $request->get('nombre');
         $ong->nombreContacto = $request->get('contacto');
@@ -95,7 +94,6 @@ class OngController extends Controller
     public function update(Request $request, $id)
     {
         $ong = Ong::find($id);
-        $ong->codigoOng = $request->get('codigo');
         $ong->categoria_id = $request->get('categoria');
         $ong->nombreOng = $request->get('nombre');
         $ong->nombreContacto = $request->get('contacto');

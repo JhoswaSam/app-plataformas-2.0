@@ -5,10 +5,6 @@
     <form action="/usuarios" method="POST">
         @csrf
         <div class="mb-3">
-            <label for="" class="form-label">Codigo</label>
-            <input id="codigo" name="codigo" type="text" class="form-control" tabindex="1">
-        </div>
-        <div class="mb-3">
             <label for="" class="form-label">Nombre</label>
             <input id="nombre" name="nombre" type="text" class="form-control" tabindex="2">
         </div>

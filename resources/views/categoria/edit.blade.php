@@ -6,10 +6,7 @@
     <form action="/categorias/{{$categoria->id}}" method="POST">
         @csrf
         @method('PUT')
-        <div class="mb-3">
-            <label for="" class="form-label">Codigo</label>
-            <input id="codigo" name="codigo" type="text" class="form-control" value="{{$categoria->codigoCad}}">
-        </div>
+        
         <div class="mb-3">
             <label for="" class="form-label">Nombre</label>
             <input id="nombre" name="nombre" type="text" class="form-control" value="{{$categoria->nombreCad}}">

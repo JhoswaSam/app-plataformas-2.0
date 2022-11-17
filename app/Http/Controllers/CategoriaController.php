@@ -40,7 +40,6 @@ class CategoriaController extends Controller
     public function store(Request $request)
     {
         $categoria = new Categoria();
-        $categoria->codigoCad = $request->get('codigo');
         $categoria->nombreCad = $request->get('nombre');
 
         $categoria->save();
@@ -81,7 +80,6 @@ class CategoriaController extends Controller
     public function update(Request $request, $id)
     {
         $categoria = Categoria::find($id);
-        $categoria->codigoCad = $request->get('codigo');
         $categoria->nombreCad = $request->get('nombre');
 
         $categoria->save();

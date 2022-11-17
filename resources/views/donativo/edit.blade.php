@@ -6,10 +6,7 @@
     <form action="/donativos/{{$donativo->id}}" method="POST">
         @csrf
         @method('PUT')
-        <div class="mb-3">
-            <label for="" class="form-label">Codigo</label>
-            <input id="codigo" name="codigo" type="text" class="form-control" tabindex="1" value="{{$donativo->codigoDon}}">
-        </div>
+        
         <div class="mb-3">
             <label for="" class="form-label">Usuario</label>
             <select  name="usuario" id="usuario">

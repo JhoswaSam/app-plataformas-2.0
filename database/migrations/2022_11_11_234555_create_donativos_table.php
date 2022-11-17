@@ -16,10 +16,16 @@ return new class extends Migration
         Schema::create('donativos', function (Blueprint $table) {
             $table->id();
             $table->foreignId('usuario_id')
-                    ->constrained('usuarios');
+                    ->nullable()
+                    ->constrained('usuarios')
+                    ->cascadeOnUpdate()
+                    ->nullOnDelete();
 
             $table->foreignId('ong_id')
-                    ->constrained('ongs');
+                    ->nullable()
+                    ->constrained('ongs')
+                    ->cascadeOnUpdate()
+                    ->nullOnDelete();
 
             $table->integer('cantidadDon');
             $table->string('descripcionDon',200);

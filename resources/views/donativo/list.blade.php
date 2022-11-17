@@ -17,7 +17,6 @@
                     <thead class="bg-primary text-white">
                         <tr>
                             <th scope="col">ID</th>
-                            <th scope="col">Codigo</th>
                             <th scope="col">Usuario</th>
                             <th scope="col">Ong</th>
                             <th scope="col">Cantidad</th>
@@ -31,7 +30,6 @@
                         @foreach ($donativos as $donativo)
                             <tr>
                                 <td>{{$donativo->id}}</td>
-                                <td>{{$donativo->codigoDon}}</td>
                                 <td>{{$donativo->usuario->codigoUs}}</td>
                                 <td>{{$donativo->ong->nombreOng}}</td>
                                 <td>{{$donativo->cantidadDon}}</td>

@@ -41,7 +41,6 @@ class DonativoController extends Controller
     public function store(Request $request)
     {
         $donativo = new Donativo();
-        $donativo->codigoDon = $request->get('codigo');
         $donativo->usuario_id = $request->get('usuario');
         $donativo->ong_id = $request->get('ong');
         $donativo->cantidadDon = $request->get('cantidad');
@@ -87,7 +86,6 @@ class DonativoController extends Controller
     public function update(Request $request, $id)
     {
         $donativo = Donativo::find($id);
-        $donativo->codigoDon = $request->get('codigo');
         $donativo->usuario_id = $request->get('usuario');
         $donativo->ong_id = $request->get('ong');
         $donativo->cantidadDon = $request->get('cantidad');
@@ -107,8 +105,6 @@ class DonativoController extends Controller
     public function donarAction(Request $request, $id, $idClient)
     {
         $donativo = new Donativo();
-
-        $donativo->codigoDon = 'D009';
         $donativo->usuario_id = $idClient;
         $donativo->ong_id = $id;
         $donativo->cantidadDon = $request->get('cantidad');

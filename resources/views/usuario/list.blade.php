@@ -7,7 +7,6 @@
     <thead class="bg-primary text-white">
         <tr>
             <th scope="col">ID</th>
-            <th scope="col">Codigo</th>
             <th scope="col">Nombre</th>
             <th scope="col">Apellidos</th>
             <th scope="col">Direccion</th>
@@ -20,7 +19,6 @@
         @foreach ($usuarios as $usuario)
             <tr>
                 <td>{{$usuario->id}}</td>
-                <td>{{$usuario->codigoUs}}</td>
                 <td>{{$usuario->nombreUs}}</td>
                 <td>{{$usuario->apellidosUs}}</td>
                 <td>{{$usuario->direccionUs}}</td>

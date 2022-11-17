@@ -37,7 +37,6 @@ class UsuarioController extends Controller
     public function store(Request $request)
     {
         $usuario = new Usuario();
-        $usuario->codigoUs = $request->get('codigo');
         $usuario->nombreUs = $request->get('nombre');
         $usuario->apellidosUs = $request->get('apellidos');
         $usuario->direccionUs = $request->get('direccion');
@@ -82,7 +81,6 @@ class UsuarioController extends Controller
     public function update(Request $request, $id)
     {
         $usuario = Usuario::find($id);
-        $usuario->codigoUs = $request->get('codigo');
         $usuario->nombreUs = $request->get('nombre');
         $usuario->apellidosUs = $request->get('apellidos');
         $usuario->direccionUs = $request->get('direccion');

@@ -4,15 +4,12 @@
     <h2>CREAR DONATIVO</h2>
     <form action="/donativos" method="POST">
         @csrf
-        <div class="mb-3">
-            <label for="" class="form-label">Codigo</label>
-            <input id="codigo" name="codigo" type="text" class="form-control" tabindex="1">
-        </div>
+        
         <div class="mb-3">
             <label for="" class="form-label">Usuario</label>
             <select  name="usuario" id="usuario">
                 @foreach ($usuarios as $usuario)
-                    <option value="{{$usuario->id}}">{{$usuario->codigoUs}}</option>
+                    <option value="{{$usuario->id}}">{{$usuario->nombreUs .' '. $usuario->apellidosUs}}</option>
                 @endforeach
             </select>
         </div>

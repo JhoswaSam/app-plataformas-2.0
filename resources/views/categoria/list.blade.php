@@ -7,7 +7,6 @@
     <thead class="bg-primary text-white">
         <tr>
             <th scope="col">ID</th>
-            <th scope="col">Codigo</th>
             <th scope="col">Nombre</th>
             <th scope="col">Acciones</th>
         </tr>
@@ -16,7 +15,6 @@
         @foreach ($categorias as $categoria)
             <tr>
                 <td>{{$categoria->id}}</td>
-                <td>{{$categoria->codigoCad}}</td>
                 <td>{{$categoria->nombreCad}}</td>
                 <td>
                     <form action="{{route('categorias.destroy',$categoria->id)}}" method="POST">
