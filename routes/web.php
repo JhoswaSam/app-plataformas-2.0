@@ -3,9 +3,12 @@
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\DonativoController;
 use App\Http\Controllers\OngController;
+use App\Http\Controllers\TestController;
 use App\Http\Controllers\UsuarioController;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Laravel\Jetstream\Rules\Role;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,18 +21,27 @@ use Laravel\Jetstream\Rules\Role;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', function (Request $request) {
+    return view('test.test', [
+        'user' => $request->user(),
+    ]);
 });
 
-Route::get('/client', function () {
-    return view('client.welcome');
+Route::get('/donation', function (Request $request) {
+    return view('test.success-donation', [
+        'user' => $request->user(),
+    ]);
 });
+
+
 
 Route::get('/list',[OngController::class,'list']);
 Route::get('/list/{id}',[OngController::class,'show']);
 Route::get('/list/{id}/donar',[DonativoController::class,'donar']);
 Route::post('/list/{id}/donar/{idClient}',[DonativoController::class,'donarAction']);
+
+Route::get('/services',[TestController::class,'services']);
+Route::get('/services/{id}',[TestController::class,'show']);
 
 
 Route::middleware([
@@ -38,9 +50,17 @@ Route::middleware([
     'verified'
 ])->group(function () {
     
-    Route::get('/dashboard', function () {
-        return view('dashboard');
+    
+    Route::get('/dashboard', function (Request $request) {
+        if ($request->user()->usuario) {
+            return view('dashboard');
+        } else {
+            return redirect('/');
+        }
+            
     })->name('dashboard');
+    
+    
 
     Route::resource('ongs',OngController::class);
 

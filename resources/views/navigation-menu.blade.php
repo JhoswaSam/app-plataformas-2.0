@@ -19,25 +19,25 @@
                 </div>
                 <!-- Items -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="categorias" >
+                    <x-jet-nav-link href="/categorias" >
                         {{ __('Categorias') }}
                     </x-jet-nav-link>
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="usuarios" >
+                    <x-jet-nav-link href="/usuarios" >
                         {{ __('Usuarios') }}
                     </x-jet-nav-link>
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="ongs" >
+                    <x-jet-nav-link href="/ongs" >
                         {{ __('Ongs') }}
                     </x-jet-nav-link>
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="donativos" >
+                    <x-jet-nav-link href="/donativos" >
                         {{ __('Donativos') }}
                     </x-jet-nav-link>
                 </div>
@@ -145,6 +145,8 @@
                         </x-slot>
                     </x-jet-dropdown>
                 </div>
+
+                
             </div>
 
             <!-- Hamburger -->

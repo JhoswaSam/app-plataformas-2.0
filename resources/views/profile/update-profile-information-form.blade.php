@@ -1,8 +1,10 @@
 <x-jet-form-section submit="updateProfileInformation">
+
     <x-slot name="title">
         {{ __('Profile Information') }}
+        @yield('contenido')
     </x-slot>
-
+    
     <x-slot name="description">
         {{ __('Update your account\'s profile information and email address.') }}
     </x-slot>
@@ -51,7 +53,7 @@
                 <x-jet-input-error for="photo" class="mt-2" />
             </div>
         @endif
-
+        
         <!-- Name -->
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="name" value="{{ __('Name') }}" />

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
 
@@ -25,7 +26,8 @@ class UsuarioController extends Controller
      */
     public function create()
     {
-        return view('usuario.create');
+        $data = User::all();
+        return view('usuario.create')->with('users',$data);
     }
 
     /**
@@ -37,6 +39,8 @@ class UsuarioController extends Controller
     public function store(Request $request)
     {
         $usuario = new Usuario();
+        $usuario->user_id =  $request->get('user');
+        $usuario->rol = $request->get('rol');
         $usuario->nombreUs = $request->get('nombre');
         $usuario->apellidosUs = $request->get('apellidos');
         $usuario->direccionUs = $request->get('direccion');
@@ -67,8 +71,9 @@ class UsuarioController extends Controller
      */
     public function edit($id)
     {
+        $data = User::all();
         $usuario = Usuario::find($id);
-        return view('usuario.edit')->with('usuario',$usuario);
+        return view('usuario.edit')->with('usuario',$usuario)->with('users',$data);
     }
 
     /**
@@ -81,7 +86,9 @@ class UsuarioController extends Controller
     public function update(Request $request, $id)
     {
         $usuario = Usuario::find($id);
+        $usuario->user_id =  $request->get('user');
         $usuario->nombreUs = $request->get('nombre');
+        $usuario->rol = $request->get('rol');
         $usuario->apellidosUs = $request->get('apellidos');
         $usuario->direccionUs = $request->get('direccion');
         $usuario->dniUs = $request->get('dni');

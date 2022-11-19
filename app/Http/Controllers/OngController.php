@@ -19,12 +19,6 @@ class OngController extends Controller
         return view('ong.list')->with('ongs',$data);
     }
 
-    public function list()
-    {
-        $data = Ong::all();
-        return view('client.listong')->with('ongs',$data);
-    }
-
     /**
      * Show the form for creating a new resource.
      *

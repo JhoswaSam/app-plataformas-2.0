@@ -16,6 +16,13 @@ return new class extends Migration
         Schema::create('usuarios', function (Blueprint $table) {
             $table->id();
             $table->string('nombreUs',20);
+            $table->foreignId('user_id')
+                    ->nullable()
+                    ->constrained('users')
+                    ->cascadeOnUpdate()
+                    ->unique();
+
+            $table->boolean('rol')->nullable();
             $table->string('apellidosUs',20);
             $table->string('direccionUs',100);
             $table->string('dniUs',8);
