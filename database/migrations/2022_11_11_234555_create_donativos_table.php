@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('usuario_id')
                     ->nullable()
-                    ->constrained('usuarios')
+                    ->constrained('users')
                     ->cascadeOnUpdate()
                     ->nullOnDelete();
 
@@ -28,7 +28,7 @@ return new class extends Migration
                     ->nullOnDelete();
 
             $table->integer('cantidadDon');
-            $table->string('descripcionDon',200);
+            $table->text('descripcionDon');
             $table->timestamps();
         });
     }

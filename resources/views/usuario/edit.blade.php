@@ -31,13 +31,7 @@
                                     </select>
                                 </div>
     
-                                <div class="field padding-bottom--24">
-                                    <label for="" class="form-label">Rol</label>
-                                    <select  name="rol" id="rol">
-                                        <option value="1">Admin</option>
-                                        <option value="0">Client</option>
-                                      </select>
-                                </div>
+
                                 
                                 <div class="field padding-bottom--24">
                                     <label for="" class="form-label">Nombre</label>

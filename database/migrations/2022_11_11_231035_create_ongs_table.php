@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('nombreContacto',50);
             $table->string('direccionOng',100);
             $table->string('telefonoOng',12);
-            $table->string('descripcionOng',250);
+            $table->text('descripcionOng');
             $table->string('correoOng',100);
             $table->boolean('estadoOng');
             $table->timestamps();

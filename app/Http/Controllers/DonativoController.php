@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Donativo;
 use App\Models\Ong;
+use App\Models\User;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
 
@@ -27,7 +28,7 @@ class DonativoController extends Controller
      */
     public function create()
     {
-        $usuarios = Usuario::all();
+        $usuarios = User::all();
         $ongs = Ong::all();
         return view('donativo.create')->with('usuarios',$usuarios)->with('ongs',$ongs);
     }
@@ -96,25 +97,7 @@ class DonativoController extends Controller
         return redirect('/donativos');
     }
 
-    public function donar($id)
-    {
-        $data = Ong::find($id);
-        return view('client.donation')->with('ong',$data);
-    }
-
-    public function donarAction(Request $request, $id, $idClient)
-    {
-        $donativo = new Donativo();
-        $donativo->usuario_id = $idClient;
-        $donativo->ong_id = $id;
-        $donativo->cantidadDon = $request->get('cantidad');
-        $donativo->descripcionDon = $request->get('descripcion');
-
-        $donativo->save();
-
-        return redirect('/list');
-    }
-
+    
     /**
      * Remove the specified resource from storage.
      *

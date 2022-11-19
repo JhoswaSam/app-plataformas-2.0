@@ -40,7 +40,6 @@ class UsuarioController extends Controller
     {
         $usuario = new Usuario();
         $usuario->user_id =  $request->get('user');
-        $usuario->rol = $request->get('rol');
         $usuario->nombreUs = $request->get('nombre');
         $usuario->apellidosUs = $request->get('apellidos');
         $usuario->direccionUs = $request->get('direccion');
@@ -88,7 +87,6 @@ class UsuarioController extends Controller
         $usuario = Usuario::find($id);
         $usuario->user_id =  $request->get('user');
         $usuario->nombreUs = $request->get('nombre');
-        $usuario->rol = $request->get('rol');
         $usuario->apellidosUs = $request->get('apellidos');
         $usuario->direccionUs = $request->get('direccion');
         $usuario->dniUs = $request->get('dni');

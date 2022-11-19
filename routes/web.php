@@ -27,28 +27,17 @@ Route::get('/', function (Request $request) {
     ]);
 });
 
-Route::get('/donation', function (Request $request) {
-    return view('test.success-donation', [
-        'user' => $request->user(),
-    ]);
-});
-
-
-
-Route::get('/list',[OngController::class,'list']);
-Route::get('/list/{id}',[OngController::class,'show']);
-Route::get('/list/{id}/donar',[DonativoController::class,'donar']);
-Route::post('/list/{id}/donar/{idClient}',[DonativoController::class,'donarAction']);
-
 Route::get('/services',[TestController::class,'services']);
 Route::get('/services/{id}',[TestController::class,'show']);
+Route::get('/services/{id}/payment',[TestController::class,'payment']);
+Route::post('/services/{id}/payment',[TestController::class,'paymentAction']);
 
 
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified'
-])->group(function () {
+],)->group(function () {
     
     
     Route::get('/dashboard', function (Request $request) {
@@ -60,13 +49,14 @@ Route::middleware([
             
     })->name('dashboard');
     
-    
 
     Route::resource('ongs',OngController::class);
-
+    
     Route::resource('categorias',CategoriaController::class);
-
+    
     Route::resource('usuarios',UsuarioController::class);
-
+    
     Route::resource('donativos',DonativoController::class);
+
+
 });

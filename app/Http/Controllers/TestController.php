@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Donativo;
 use App\Models\Ong;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -9,9 +10,7 @@ use Illuminate\Http\Request;
 class TestController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Funcion que nos retorna el index para el cliente guardando datos del context como es el usuario
      */
     public function index(Request $request)
     {
@@ -20,6 +19,9 @@ class TestController extends Controller
         ]);
     }
 
+    /**
+     * Funcion que nos retorna a la vista donde se van a listar todas las ongs  
+     */
     public function services(Request $request)
     {
         $data = Ong::all();
@@ -53,10 +55,7 @@ class TestController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * Funcion que nos retorna a la vista donde se describe la ong
      */
     public function show(Request $request, $id)
     {
@@ -66,6 +65,33 @@ class TestController extends Controller
             'ong' => $data
         ]);
     }
+
+
+    /**
+     * Funcion que nos retorna a la vista donde realizaremos el pago a la donacion
+     */
+    public function payment(Request $request, $id)
+    {
+        $data = Ong::find($id);
+        return view('test.success-donation', [
+            'user' => $request->user(),
+            'ong' => $data
+        ]);
+    }
+
+    public function paymentAction(Request $request, $id)
+    {
+        $donativo = new Donativo();
+        $donativo->usuario_id = $request->user()->id;
+        $donativo->ong_id = $id;
+        $donativo->cantidadDon = $request->get('cantidad');
+        $donativo->descripcionDon = $request->get('descripcion');
+
+        $donativo->save();
+
+        return redirect('/');
+    }
+
 
     /**
      * Show the form for editing the specified resource.

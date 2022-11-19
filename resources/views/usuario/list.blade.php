@@ -25,7 +25,6 @@
                                 <th scope="col">Direccion</th>
                                 <th scope="col">DNI</th>
                                 <th scope="col">Telefono</th>
-                                <th scope="col">Rol</th>
                                 <th scope="col">Acciones</th>
                             </tr>
                         </thead>
@@ -43,7 +42,6 @@
                                     <td>{{$usuario->direccionUs}}</td>
                                     <td>{{$usuario->dniUs}}</td>
                                     <td>{{$usuario->telefonoUs}}</td>
-                                    <td>{{$usuario->rol}}</td>
                                     <td>
                                         <form action="{{route('usuarios.destroy',$usuario->id)}}" method="POST">
                                             <a class="btn-editar" href="/usuarios/{{$usuario->id}}/edit">Editar</a>

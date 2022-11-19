@@ -31,7 +31,7 @@
                             @foreach ($donativos as $donativo)
                                 <tr>
                                     <td>{{$donativo->id}}</td>
-                                    <td>{{$donativo->usuario->codigoUs}}</td>
+                                    <td>{{$donativo->usuario->id}}</td>
                                     <td>{{$donativo->ong->nombreOng}}</td>
                                     <td>{{$donativo->cantidadDon}}</td>
                                     <td>{{$donativo->descripcionDon}}</td>

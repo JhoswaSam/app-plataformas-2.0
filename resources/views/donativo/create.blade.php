@@ -24,7 +24,7 @@
                                     <label for="" class="form-label">Usuario</label>
                                     <select  name="usuario" id="usuario">
                                         @foreach ($usuarios as $usuario)
-                                            <option value="{{$usuario->id}}">{{$usuario->nombreUs .' '. $usuario->apellidosUs}}</option>
+                                            <option value="{{$usuario->id}}">{{$usuario->id}}</option>
                                         @endforeach
                                     </select>
                                 </div>

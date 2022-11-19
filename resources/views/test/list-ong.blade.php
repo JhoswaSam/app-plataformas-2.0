@@ -80,7 +80,7 @@
 
     <!-- ser section -->
 
-    <section class="veg_section layout_padding">
+    <section style="margin-bottom: 30px;" class="veg_section layout_padding">
         <div class="container">
           <div class="heading_container heading_center">
             <h2>
@@ -114,11 +114,7 @@
             
           </div>
 
-          <div id="cta" style="padding: 0% ;margin-bottom: 40px;" class="btn-box">
-            <a href="" class="wow fadeInUp btn btn-success">
-              View More
-            </a>
-          </div>
+          
         </div>
       </section>
     
