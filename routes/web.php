@@ -39,7 +39,8 @@ Route::middleware([
     'verified'
 ],)->group(function () {
     
-    
+
+
     Route::get('/dashboard', function (Request $request) {
         if ($request->user()->usuario) {
             return view('dashboard');
