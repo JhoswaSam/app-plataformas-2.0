@@ -13,10 +13,14 @@ class UsuarioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = Usuario::all();
-        return view('usuario.list')->with('usuarios',$data);
+        if ($request->user()->usuario) {
+            $data = Usuario::all();
+            return view('usuario.list')->with('usuarios',$data);
+        } else {
+            return redirect('/');
+        }
     }
 
     /**
@@ -24,10 +28,15 @@ class UsuarioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        $data = User::all();
-        return view('usuario.create')->with('users',$data);
+        //if ($request->user()->usuario) {
+        
+            $data = User::all();
+            return view('usuario.create')->with('users',$data);
+        //} else {
+            //return redirect('/');
+        //}
     }
 
     /**
@@ -68,11 +77,16 @@ class UsuarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
-        $data = User::all();
-        $usuario = Usuario::find($id);
-        return view('usuario.edit')->with('usuario',$usuario)->with('users',$data);
+        if ($request->user()->usuario) {
+        
+            $data = User::all();
+            $usuario = Usuario::find($id);
+            return view('usuario.edit')->with('usuario',$usuario)->with('users',$data);
+        } else {
+            return redirect('/');
+        }
     }
 
     /**

@@ -8,6 +8,7 @@
         <meta name="keywords" content="">
         <meta name="author" content="GeTheme">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <link rel="icon shortcut " href="img/corazon.png">
 
         <title>Tacabo || Channel</title>
 
@@ -39,7 +40,7 @@
                       <span class="icon icon-bar"></span>
                       <span class="icon icon-bar"></span>
                   </button>
-                  <a href="index.html" class="navbar-brand">MINIML.</a>
+                  <a href="index.html" class="navbar-brand">TABACO & CHANNEL</a>
               </div>
 
               <div class="collapse navbar-collapse">
@@ -61,8 +62,8 @@
                 <div class="row">
 
                     <div class="col-md-offset-2 col-md-8 col-sm-12">
-                        <p class="wow fadeInUp" data-wow-delay="0.4s">FIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-                        <a href="about.html" class="wow fadeInUp btn btn-success" data-wow-delay="0.8s">LEARN ABOUT US</a>
+                        <p class="wow fadeInUp" data-wow-delay="0.4s">El sabio no atesora. Cuanto más ayuda a los demás, más se beneficia. Cuanto más da a los demás, mas obtiene para él.</p>
+                        <a href="/about" class="wow fadeInUp btn btn-success" data-wow-delay="0.8s">SABER MAS DE NOSOTROS</a>
                     </div>
 
                 </div>
@@ -78,25 +79,14 @@
 
                     <div class="col-md-12 col-sm-12">
                         <div class="footer-copyright">
-                            <ul class="social-icon">	
-                                <li><a href="#" class="fa fa-facebook wow fadeInUp" data-wow-delay="0.2s"></a></li>
-                                <li><a href="#" class="fa fa-twitter wow fadeInUp" data-wow-delay="0.4s"></a></li>
-                                <li><a href="#" class="fa fa-linkedin wow fadeInUp" data-wow-delay="0.6s"></a></li>
-                                <li><a href="#" class="fa fa-google-plus wow fadeInUp" data-wow-delay="0.8s"></a></li>
-                                <li><a href="#" class="fa fa-dribbble wow fadeInUp" data-wow-delay="1s"></a></li>
-                            </ul>
-                            <p class="small">&copy Copyright 2018  Miniml HTML Template - All Rights Reserved</p>
+                            
+                            <p class="small">&copy Copyright 2022  Tabaco&Channel - All Rights Reserved</p>
                         </div>
                     </div>
 
                 </div>
             </div>
         </footer>
-
-
-        <!-- Back top -->
-
-        <a href="#" class="go-top"><i class="fa fa-angle-up"></i></a>
 
       @yield('js')
     </body>

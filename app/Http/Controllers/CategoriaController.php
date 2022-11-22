@@ -12,10 +12,15 @@ class CategoriaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = Categoria::all();
-        return view('categoria.list')->with('categorias',$data);
+        if ($request->user()->usuario) {
+            $data = Categoria::all();
+            return view('categoria.list')->with('categorias',$data);
+        } else {
+            return redirect('/');
+        }
+        
     }
 
     
@@ -26,9 +31,14 @@ class CategoriaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('categoria.create');
+        if ($request->user()->usuario) {
+        
+            return view('categoria.create');
+        } else {
+            return redirect('/');
+        }
     }
 
     /**
@@ -64,10 +74,14 @@ class CategoriaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
-        $categoria = Categoria::find($id);
-        return view('categoria.edit')->with('categoria',$categoria);
+        if ($request->user()->usuario) {
+            $categoria = Categoria::find($id);
+            return view('categoria.edit')->with('categoria',$categoria);
+        } else {
+            return redirect('/');
+        }
     }
 
     /**
@@ -79,6 +93,7 @@ class CategoriaController extends Controller
      */
     public function update(Request $request, $id)
     {
+        
         $categoria = Categoria::find($id);
         $categoria->nombreCad = $request->get('nombre');
 

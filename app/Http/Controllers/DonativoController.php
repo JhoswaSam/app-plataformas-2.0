@@ -15,10 +15,14 @@ class DonativoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = Donativo::all();
-        return view('donativo.list')->with('donativos',$data);
+        if ($request->user()->usuario) {
+            $data = Donativo::all();
+            return view('donativo.list')->with('donativos',$data);
+        } else {
+            return redirect('/');
+        }
     }
 
     /**
@@ -26,11 +30,15 @@ class DonativoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        $usuarios = User::all();
-        $ongs = Ong::all();
-        return view('donativo.create')->with('usuarios',$usuarios)->with('ongs',$ongs);
+        if ($request->user()->usuario) {
+            $usuarios = User::all();
+            $ongs = Ong::all();
+            return view('donativo.create')->with('usuarios',$usuarios)->with('ongs',$ongs);
+        } else {
+            return redirect('/');
+        }
     }
 
     /**
@@ -42,7 +50,7 @@ class DonativoController extends Controller
     public function store(Request $request)
     {
         $donativo = new Donativo();
-        $donativo->usuario_id = $request->get('usuario');
+        $donativo->user_id = $request->get('usuario');
         $donativo->ong_id = $request->get('ong');
         $donativo->cantidadDon = $request->get('cantidad');
         $donativo->descripcionDon = $request->get('descripcion');
@@ -69,12 +77,17 @@ class DonativoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
-        $donativo = Donativo::find($id);
-        $usuarios = Usuario::all();
-        $ongs = Ong::all();
-        return view('donativo.edit')->with('usuarios',$usuarios)->with('ongs',$ongs)->with('donativo',$donativo);
+        if ($request->user()->usuario) {
+        
+            $donativo = Donativo::find($id);
+            $usuarios = Usuario::all();
+            $ongs = Ong::all();
+            return view('donativo.edit')->with('usuarios',$usuarios)->with('ongs',$ongs)->with('donativo',$donativo);
+        } else {
+            return redirect('/');
+        }
     }
 
     /**

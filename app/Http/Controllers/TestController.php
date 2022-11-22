@@ -19,6 +19,29 @@ class TestController extends Controller
         ]);
     }
 
+
+    /**
+     * Funcion que nos retorna el index para el cliente guardando datos del context como es el usuario
+     */
+    public function about(Request $request)
+    {
+        return view('test.about', [
+            'user' => $request->user(),
+        ]);
+    }
+
+
+    /**
+     * Funcion que nos retorna el index para el cliente guardando datos del context como es el usuario
+     */
+    public function contact(Request $request)
+    {
+        return view('test.contact', [
+            'user' => $request->user(),
+        ]);
+    }
+
+
     /**
      * Funcion que nos retorna a la vista donde se van a listar todas las ongs  
      */
@@ -28,6 +51,19 @@ class TestController extends Controller
         return view('test.list-ong', [
             'user' => $request->user(),
             'ongs' => $data
+        ]);
+    }
+
+
+    /**
+     * Funcion para listar las donaciones de un usuario y su perfil
+     */
+    public function profile(Request $request)
+    {
+        $donaciones = $request->user()->donaciones;
+        return view('test.profile', [
+            'user'=>$request->user(),
+            'donaciones' => $donaciones
         ]);
     }
 
@@ -72,17 +108,19 @@ class TestController extends Controller
      */
     public function payment(Request $request, $id)
     {
+        
         $data = Ong::find($id);
         return view('test.success-donation', [
             'user' => $request->user(),
             'ong' => $data
         ]);
+        
     }
 
     public function paymentAction(Request $request, $id)
     {
         $donativo = new Donativo();
-        $donativo->usuario_id = $request->user()->id;
+        $donativo->user_id = $request->user()->id;
         $donativo->ong_id = $id;
         $donativo->cantidadDon = $request->get('cantidad');
         $donativo->descripcionDon = $request->get('descripcion');

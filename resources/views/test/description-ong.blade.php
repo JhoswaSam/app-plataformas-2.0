@@ -18,45 +18,44 @@
 @endsection
 
 @section('menu-active')
-    <li><a href="/">Home</a></li>
-    <li><a href="about.html">About</a></li>
-    <li class="active"><a href="/services">Service</a></li>
-    <li><a href="work.html">Work</a></li>
-    <li><a href="contact.html">Contact</a></li>
+    <li><a href="/">Inicio</a></li>
+    <li><a href="/about">Nosotros</a></li>
+    <li class="active"><a href="/services">Ongs</a></li>
+    <li><a href="/contact">Contactenos</a></li>
     
-        @if (Route::has('login'))   
-            @auth
-                @if ($user->usuario)
-                    <li>
-                        <a href="{{ url('/dashboard') }}">{{ __('Dashboard') }}</a>
-                    </li>
-                @else
-                    <li>
-                        <a href="{{ route('profile.show') }}">{{ __('Profile') }}</a>
-                    </li>
-                
-                    <!-- Authentication -->
-                    <li>
-                        <form style="margin-top: 14%" method="POST" action="{{ url('/logout2') }}" x-data>
-                            @csrf
-                            <a href="{{ url('/logout2') }}" @click.prevent="$root.submit();">{{ __('Log Out') }}</a>
-                        </form>
-                    </li>
+    @if (Route::has('login'))   
+    @auth
+        @if ($user->usuario)
+            <li>
+                <a href="{{ url('/dashboard') }}">{{ __('Dashboard') }}</a>
+            </li>
+        @else
+            <li>
+                <a href="{{ url('/profile/client') }}">{{ __('Perfil') }}</a>
+            </li>
+        
+            <!-- Authentication -->
+            <li>
+                <form style="margin-top: 20%" method="POST" action="{{ url('/logout2') }}" x-data>
+                    @csrf
+                    <a href="{{ url('/logout2') }}" @click.prevent="$root.submit();">{{ __('Salir') }}</a>
+                </form>
+            </li>
 
-                @endif
-            @else
-                <li>
-                    <a href="{{ route('login') }}" >Log in</a>
-                </li>
-
-            @if (Route::has('register'))
-                <li>
-                    <a href="{{ route('register') }}" >Register</a>
-                </li>
-            @endif
-
-            @endauth
         @endif
+    @else
+        <li>
+            <a href="{{ route('login') }}" >Iniciar Sesión</a>
+        </li>
+
+    @if (Route::has('register'))
+        <li>
+            <a href="{{ route('register') }}" >Registrarse</a>
+        </li>
+    @endif
+
+    @endauth
+    @endif
 
 @endsection
 
@@ -73,10 +72,13 @@
                     <h1 class="display-5 fw-bolder">{{$ong->nombreOng}}</h1>
                     
                     <p style="margin-top: 3%" class="lead">{{$ong->descripcionOng}}</p>
+                    <p style="margin-top: 3%" class="lead">DIRECCION : {{$ong->direccionOng}}</p>
+                    <p style="margin-top: 3%" class="lead">TELEFONO : {{$ong->telefonoOng}}</p>
+                    <p style="margin-top: 3%" class="lead">CORREO : {{$ong->correoOng}}</p>
                     
                     <div id="cta" style="padding: 0% ;margin-bottom: 40px;" class="btn-box">
                         <a href="./{{$ong->id}}/payment" class="wow fadeInUp btn btn-success">
-                          Donate
+                          Donar
                         </a>
                       </div>
                 </div>

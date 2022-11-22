@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string('telefonoOng',12);
             $table->text('descripcionOng');
             $table->string('correoOng',100);
+            $table->string('fotoOng')->nullable();
             $table->boolean('estadoOng');
             $table->timestamps();
         });

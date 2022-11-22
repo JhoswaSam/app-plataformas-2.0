@@ -11,7 +11,7 @@ class Donativo extends Model
 
     public function usuario()
     {
-        return $this->belongsTo(Usuario::class,'usuario_id','id');
+        return $this->belongsTo(User::class,'user_id');
     }
 
     public function ong()

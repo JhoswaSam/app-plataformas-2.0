@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('donativos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('usuario_id')
+            $table->foreignId('user_id')
                     ->nullable()
                     ->constrained('users')
                     ->cascadeOnUpdate()

@@ -17,7 +17,7 @@
                     
                     <div class="formbg">
                         <div class="padding-horizontal--48">
-                            <form action="/ongs" method="POST">
+                            <form action="/ongs" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 
                                 <div class="field padding-bottom--24">
@@ -59,7 +59,10 @@
                                         <option value="0">Inactivo</option>
                                       </select>
                                 </div>
-                                
+                                <div class="field padding-bottom--24">
+                                    <label for="foto" class="form-label">Foto</label>
+                                    <input id="foto" name="foto" type="file" class="form-control" accept="image/*" tabindex="2">
+                                </div>
                         
                                 <a href="/ongs" class="btn-cancelar" tabindex="5">Cancelar</a>
                                 <button type="submit" class="btn-guardar" tabindex="4">Guardar</button>

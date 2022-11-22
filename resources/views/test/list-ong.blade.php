@@ -18,45 +18,44 @@
 @endsection
 
 @section('menu-active')
-    <li><a href="/">Home</a></li>
-    <li><a href="about.html">About</a></li>
-    <li class="active"><a href="/services">Service</a></li>
-    <li><a href="work.html">Work</a></li>
-    <li><a href="contact.html">Contact</a></li>
+    <li><a href="/">Inicio</a></li>
+    <li><a href="/about">Nosotros</a></li>
+    <li class="active"><a href="/services">Ongs</a></li>
+    <li><a href="/contact">Contactenos</a></li>
     
-        @if (Route::has('login'))   
-            @auth
-                @if ($user->usuario)
-                    <li>
-                        <a href="{{ url('/dashboard') }}">{{ __('Dashboard') }}</a>
-                    </li>
-                @else
-                    <li>
-                        <a href="{{ route('profile.show') }}">{{ __('Profile') }}</a>
-                    </li>
-                
-                    <!-- Authentication -->
-                    <li>
-                        <form style="margin-top: 14%" method="POST" action="{{ url('/logout2') }}" x-data>
-                            @csrf
-                            <a href="{{ url('/logout2') }}" @click.prevent="$root.submit();">{{ __('Log Out') }}</a>
-                        </form>
-                    </li>
+    @if (Route::has('login'))   
+    @auth
+        @if ($user->usuario)
+            <li>
+                <a href="{{ url('/dashboard') }}">{{ __('Dashboard') }}</a>
+            </li>
+        @else
+            <li>
+                <a href="{{ url('/profile/client') }}">{{ __('Perfil') }}</a>
+            </li>
+        
+            <!-- Authentication -->
+            <li>
+                <form style="margin-top: 20%" method="POST" action="{{ url('/logout2') }}" x-data>
+                    @csrf
+                    <a href="{{ url('/logout2') }}" @click.prevent="$root.submit();">{{ __('Salir') }}</a>
+                </form>
+            </li>
 
-                @endif
-            @else
-                <li>
-                    <a href="{{ route('login') }}" >Log in</a>
-                </li>
-
-            @if (Route::has('register'))
-                <li>
-                    <a href="{{ route('register') }}" >Register</a>
-                </li>
-            @endif
-
-            @endauth
         @endif
+    @else
+        <li>
+            <a href="{{ route('login') }}" >Iniciar Sesión</a>
+        </li>
+
+    @if (Route::has('register'))
+        <li>
+            <a href="{{ route('register') }}" >Registrarse</a>
+        </li>
+    @endif
+
+    @endauth
+    @endif
 
 @endsection
 
@@ -69,8 +68,8 @@
             <div class="row">
 
                 <div class="col-md-12 col-sm-12">
-                    <h1 class="wow fadeInUp head" data-wow-delay="0.6s">What we do</h1>
-                    <p class="wow fadeInUp lr-pd" data-wow-delay="0.8s">We help Brands and Businesses build communication across Web, Print and Digital Medium.</p>
+                    <h1 class="wow fadeInUp head" data-wow-delay="0.6s">Lista de ongs</h1>
+                    <p class="wow fadeInUp lr-pd" data-wow-delay="0.8s">Aqui podras ver todas las ongs registradas aqui previamente verificadas por nuestro equipo para que puedas donar con toda confianza</p>
                 </div>
 
             </div>
@@ -84,10 +83,10 @@
         <div class="container">
           <div class="heading_container heading_center">
             <h2>
-              Our Vegetables
+              Ongs
             </h2>
             <p>
-              which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't an
+              Todos ellos necesitan un poco de ayuda busca la que creas que necesitan de tu ayuda y donales lo que puedas ofrecer.
             </p>
           </div>
 
@@ -96,7 +95,7 @@
               <div class="col-md-6 col-lg-4">
                 <div class="box">
                   <div class="img-box">
-                    <img src="img/p1.png" alt="">
+                    <img style="max-width: 100%;" src="{{asset($ong->fotoOng)}}" alt="{{$ong->nombreOng}}">
                   </div>
                   <div class="detail-box">
                     <a href="/services/{{$ong->id}}">

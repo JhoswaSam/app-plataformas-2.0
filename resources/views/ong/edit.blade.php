@@ -15,7 +15,7 @@
                     
                     <div class="formbg">
                         <div class="padding-horizontal--48">
-                            <form action="/ongs/{{$ong->id}}" method="POST">
+                            <form action="/ongs/{{$ong->id}}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 
@@ -52,6 +52,14 @@
                                     <label for="" class="form-label">Correo</label>
                                     <input id="correo" name="correo" type="text" class="form-control" tabindex="2" value="{{$ong->correoOng}}">
                                 </div>
+
+                                <div class="field padding-bottom--24">
+                                    <label for="" class="form-label">Foto</label>
+                                    <img src="{{asset($ong->fotoOng)}}" alt="{{$ong->nombreOng}}">
+                                    <input id="foto" name="foto" type="file" class="form-control" accept="image/*" tabindex="2">
+                                </div>
+
+
                                 <div class="field padding-bottom--24">
                                     <label for="" class="form-label">Estado</label>
                         

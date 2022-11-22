@@ -87,45 +87,44 @@
 @endsection
 
 @section('menu-active')
-    <li><a href="/">Home</a></li>
-    <li><a href="about.html">About</a></li>
-    <li class="active"><a href="/services">Service</a></li>
-    <li><a href="work.html">Work</a></li>
-    <li><a href="contact.html">Contact</a></li>
+    <li><a href="/">Inicio</a></li>
+    <li><a href="/about">Nosotros</a></li>
+    <li class="active"><a href="/services">Ongs</a></li>
+    <li><a href="/contact">Contactenos</a></li>
     
-        @if (Route::has('login'))   
-            @auth
-                @if ($user->usuario)
-                    <li>
-                        <a href="{{ url('/dashboard') }}">{{ __('Dashboard') }}</a>
-                    </li>
-                @else
-                    <li>
-                        <a href="{{ route('profile.show') }}">{{ __('Profile') }}</a>
-                    </li>
-                
-                    <!-- Authentication -->
-                    <li>
-                        <form style="margin-top: 14%" method="POST" action="{{ url('/logout2') }}" x-data>
-                            @csrf
-                            <a href="{{ url('/logout2') }}" @click.prevent="$root.submit();">{{ __('Log Out') }}</a>
-                        </form>
-                    </li>
+    @if (Route::has('login'))   
+    @auth
+        @if ($user->usuario)
+            <li>
+                <a href="{{ url('/dashboard') }}">{{ __('Dashboard') }}</a>
+            </li>
+        @else
+            <li>
+                <a href="{{ url('/profile/client') }}">{{ __('Perfil') }}</a>
+            </li>
+        
+            <!-- Authentication -->
+            <li>
+                <form style="margin-top: 20%" method="POST" action="{{ url('/logout2') }}" x-data>
+                    @csrf
+                    <a href="{{ url('/logout2') }}" @click.prevent="$root.submit();">{{ __('Salir') }}</a>
+                </form>
+            </li>
 
-                @endif
-            @else
-                <li>
-                    <a href="{{ route('login') }}" >Log in</a>
-                </li>
-
-            @if (Route::has('register'))
-                <li>
-                    <a href="{{ route('register') }}" >Register</a>
-                </li>
-            @endif
-
-            @endauth
         @endif
+    @else
+        <li>
+            <a href="{{ route('login') }}" >Iniciar Sesión</a>
+        </li>
+
+    @if (Route::has('register'))
+        <li>
+            <a href="{{ route('register') }}" >Registrarse</a>
+        </li>
+    @endif
+
+    @endauth
+    @endif
 
 @endsection
 
@@ -134,26 +133,26 @@
     <div class="padding-horizontal--48">
         <div class="container p-0">
             <div class="card px-4">
-                <p class="h8 py-3 field padding-bottom--24">Payment Details</p>
+                <p class="h8 py-3 field padding-bottom--24">Detalles del donativo para {{$ong->nombreOng}}</p>
                 <div class="row gx-3">
                     <form action="/services/{{$ong->id}}/payment" method="POST">
                         @csrf
                         <div class="col-12 field padding-bottom--24">
                             <div class="d-flex flex-column">
-                                <p class="text mb-1">Person Name</p>
-                                <input class="form-control mb-3" type="text" placeholder="Name" value="{{$user->name}}">
+                                <p class="text mb-1">Nombre del donante</p>
+                                <input class="form-control mb-3" type="text" required placeholder="Name" value="{{$user->name}}">
                             </div>
                         </div>
                         <div class="col-12 field padding-bottom--24">
                             <div class="d-flex flex-column">
-                                <p class="text mb-1">Card Number</p>
-                                <input class="form-control mb-3" type="text" placeholder="1234 5678 435678">
+                                <p class="text mb-1">Numero de tarjeta</p>
+                                <input class="form-control mb-3" type="text" required placeholder="1234 5678 435678">
                             </div>
                         </div>
                         <div class="col-6 field padding-bottom--24">
                             <div class="d-flex flex-column">
-                                <p class="text mb-1">Expiry</p>
-                                <input class="form-control mb-3" type="text" placeholder="MM/YYYY">
+                                <p class="text mb-1">Fecha de expiracion</p>
+                                <input class="form-control mb-3" type="text" required placeholder="MM/YYYY">
                             </div>
                         </div>
                         <div class="col-6 field padding-bottom--24">
@@ -164,20 +163,20 @@
                         </div>
                         <div class="col-6 field padding-bottom--24">
                             <div class="d-flex flex-column">
-                                <p class="text mb-1">Amount</p>
-                                <input id="cantidad" name="cantidad" class="form-control mb-3 pt-2 " type="number" placeholder="$$$">
+                                <p class="text mb-1">Monto a donar</p>
+                                <input id="cantidad" name="cantidad" class="form-control mb-3 pt-2 " required type="number" placeholder="$$$">
                             </div>
                         </div>
                         <div class="col-6 field padding-bottom--24">
                             <div class="d-flex flex-column">
-                                <p class="text mb-1">Description</p>
-                                <input id="descripcion" name="descripcion" class="form-control mb-3 pt-2 " type="text" placeholder="Message">
+                                <p class="text mb-1">Mensaje de motivacion</p>
+                                <input id="descripcion" name="descripcion" class="form-control mb-3 pt-2 " required type="text" placeholder="Message">
                             </div>
                         </div>
                         
 
-                        <a href="/" class="btn btn-secondary" tabindex="5">Cancel</a>
-                        <button type="submit" class="btn btn-primary" tabindex="4">Pay</button>
+                        <a href="/" class="btn btn-secondary" tabindex="5">Cancelar</a>
+                        <button type="submit" class="btn btn-primary" tabindex="4">Donar</button>
                     </form>
                 </div>
             </div>

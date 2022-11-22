@@ -27,10 +27,11 @@ Route::get('/', function (Request $request) {
     ]);
 });
 
+
+Route::get('/about',[TestController::class,'about']);
+Route::get('/contact',[TestController::class,'contact']);
 Route::get('/services',[TestController::class,'services']);
 Route::get('/services/{id}',[TestController::class,'show']);
-Route::get('/services/{id}/payment',[TestController::class,'payment']);
-Route::post('/services/{id}/payment',[TestController::class,'paymentAction']);
 
 
 Route::middleware([
@@ -38,8 +39,6 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ],)->group(function () {
-    
-
 
     Route::get('/dashboard', function (Request $request) {
         if ($request->user()->usuario) {
@@ -50,14 +49,18 @@ Route::middleware([
             
     })->name('dashboard');
     
+    /**
+     * Rutas para hacer la donacion
+     */
+    Route::get('/services/{id}/payment',[TestController::class,'payment']);
+    Route::post('/services/{id}/payment',[TestController::class,'paymentAction']);
+    Route::get('/profile/client',[TestController::class,'profile']);
 
+    /**
+     * Rutas de los controladores para el CRUD admin
+     */
     Route::resource('ongs',OngController::class);
-    
     Route::resource('categorias',CategoriaController::class);
-    
     Route::resource('usuarios',UsuarioController::class);
-    
     Route::resource('donativos',DonativoController::class);
-
-
 });

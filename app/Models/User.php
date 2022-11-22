@@ -63,4 +63,11 @@ class User extends Authenticatable
     {
         return $this->hasOne(Usuario::class);
     }
+
+    public function donaciones()
+    {
+        return $this->hasMany(Donativo::class);
+    }
+
+
 }

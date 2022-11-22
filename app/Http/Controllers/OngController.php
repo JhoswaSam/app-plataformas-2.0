@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Categoria;
 use App\Models\Ong;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File; 
+use Illuminate\Support\Facades\Storage;
 
 class OngController extends Controller
 {
@@ -13,10 +15,15 @@ class OngController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = Ong::all();
-        return view('ong.list')->with('ongs',$data);
+        if ($request->user()->usuario) {
+            $data = Ong::all();
+            return view('ong.list')->with('ongs',$data);
+        
+        } else {
+            return redirect('/');
+        }
     }
 
     /**
@@ -24,10 +31,15 @@ class OngController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        $data = Categoria::all();
-        return view('ong.create')->with('categorias',$data);
+        if ($request->user()->usuario) {
+        
+            $data = Categoria::all();
+            return view('ong.create')->with('categorias',$data);
+        } else {
+            return redirect('/');
+        }
     }
 
     /**
@@ -39,6 +51,15 @@ class OngController extends Controller
     public function store(Request $request)
     {
         $ong = new Ong();
+
+        if ($request->hasFile('foto')) {
+            $file = $request->file('foto');
+            $path = 'img/ong/';
+            $fileName = time().'-'.$file->getClientOriginalName();
+            $fileSuccess = $request->file('foto')->move($path,$fileName);
+            $ong->fotoOng = $path.$fileName;
+        }
+        
         $ong->categoria_id = $request->get('categoria');
         $ong->nombreOng = $request->get('nombre');
         $ong->nombreContacto = $request->get('contacto');
@@ -61,8 +82,7 @@ class OngController extends Controller
      */
     public function show($id)
     {
-        $data = Ong::find($id);
-        return view('client.descriptionong')->with('ong',$data);
+
     }
 
     /**
@@ -71,11 +91,16 @@ class OngController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
-        $ong = Ong::find($id);
-        $categorias = Categoria::all();
-        return view('ong.edit')->with('ong',$ong)->with('categorias',$categorias);
+        if ($request->user()->usuario) {
+        
+            $ong = Ong::find($id);
+            $categorias = Categoria::all();
+            return view('ong.edit')->with('ong',$ong)->with('categorias',$categorias);
+        } else {
+            return redirect('/');
+        }
     }
 
     /**
@@ -88,6 +113,22 @@ class OngController extends Controller
     public function update(Request $request, $id)
     {
         $ong = Ong::find($id);
+
+        
+        
+        if ($request->hasFile('foto')) {
+            
+            //Storage::delete('public'.$ong->fotoOng);
+            
+            File::delete($ong->fotoOng);
+
+            $file = $request->file('foto');
+            $path = 'img/ong/';
+            $fileName = time().'-'.$file->getClientOriginalName();
+            $fileSuccess = $request->file('foto')->move($path,$fileName);
+            $ong->fotoOng = $path.$fileName;
+        }
+
         $ong->categoria_id = $request->get('categoria');
         $ong->nombreOng = $request->get('nombre');
         $ong->nombreContacto = $request->get('contacto');
