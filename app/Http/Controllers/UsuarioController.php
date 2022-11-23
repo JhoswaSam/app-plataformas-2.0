@@ -30,13 +30,13 @@ class UsuarioController extends Controller
      */
     public function create(Request $request)
     {
-        //if ($request->user()->usuario) {
+        if ($request->user()->usuario) {
         
             $data = User::all();
             return view('usuario.create')->with('users',$data);
-        //} else {
-            //return redirect('/');
-        //}
+        } else {
+            return redirect('/');
+        }
     }
 
     /**

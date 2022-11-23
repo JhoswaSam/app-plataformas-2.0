@@ -24,7 +24,7 @@
                                 <div class="field padding-bottom--24">
                                     <label for="" class="form-label">Usuario</label>
                                     <select  name="usuario" id="usuario">
-                                        <option value="{{$donativo->usuario_id}}">{{$donativo->usuario_id}}</option>
+                                        <option value="{{$donativo->user_id}}">{{$donativo->user_id}}</option>
                                         @foreach ($usuarios as $usuario)
                                             <option value="{{$usuario->id}}">{{$usuario->id}}</option>
                                         @endforeach
